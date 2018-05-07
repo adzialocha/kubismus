@@ -1,0 +1,33 @@
+$_editor-item-size: 16rem;
+
+.editor {
+  display: flex;
+
+  height: 100%;
+}
+
+.editor__parameters {
+  display: flex;
+
+  overflow: auto;
+
+  align-content: flex-start;
+
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.editor__parameters-item {
+  width: $_editor-item-size;
+  height: $_editor-item-size;
+}
+
+.editor__sidebar {
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  width: $_editor-item-size * 2;
+  height: 100%;
+
+  background-color: $gray-darkest;
+}

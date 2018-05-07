@@ -1,0 +1,9 @@
+.settings-view {
+  display: flex;
+}
+
+.settings-view__panel {
+  width: 50%;
+
+  padding: $default-spacing;
+}

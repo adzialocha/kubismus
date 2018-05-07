@@ -1,0 +1,55 @@
+// color definitions
+$black: #000;
+$white: #fff;
+
+$gray-darkest: #222;
+$gray-darker: #444;
+$gray-dark: #666;
+$gray: #888;
+$gray-light: #aaa;
+$gray-lighter: #ccc;
+$gray-lightest: #eee;
+
+$blue: #8686ff;
+$green: #45fd45;
+$red: #ff3e3e;
+$yellow: #ffaf1d;
+
+// font weight definitions
+$font-weight-regular: 300;
+$font-weight-bold: 900;
+
+// main colors
+$body-color: $gray-darker;
+$text-color: $white;
+
+// main fonts
+$font-base-family: "Arial", sans-serif;
+$font-base-size: 1.6rem;
+$font-base-weight: $font-weight-regular;
+
+$base-line-height: 1.2;
+
+// layout
+$default-spacing: 1rem;
+
+// buttons
+$button-background-color: $black;
+$button-color: $white;
+$button-disabled-background-color: $gray-darkest;
+$button-disabled-color: $gray-dark;
+
+// inputs
+$input-background-color: $black;
+$input-color: $white;
+$input-disabled-background-color: $gray-darkest;
+$input-disabled-color: $gray-dark;
+
+// components
+$bar-height: 5rem;
+
+// z-index
+$z-index: (
+  view: 500,
+  bar: 1000,
+);

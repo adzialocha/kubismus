@@ -1,0 +1,20 @@
+.sidebar {
+  padding: $default-spacing;
+}
+
+.sidebar__group {
+  padding-top: $default-spacing;
+  padding-bottom: $default-spacing;
+
+  border-bottom: .1rem solid $gray-darker;
+}
+
+.sidebar__label {
+  display: block;
+
+  margin-bottom: $default-spacing;
+}
+
+.sidebar__input {
+  width: 100%;
+}

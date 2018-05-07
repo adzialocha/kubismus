@@ -1,0 +1,24 @@
+html,
+body {
+  overflow: hidden;
+
+  height: 100%;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: $text-color;
+
+  background-color: $body-color;
+
+  font-weight: $font-base-weight;
+  font-size: $font-base-size;
+  font-family: $font-base-family;
+}
+
+.wrapper {
+  height: 100%;
+}

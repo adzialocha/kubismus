@@ -1,0 +1,19 @@
+.parameter {
+  height: 100%;
+
+  padding: $default-spacing;
+
+  cursor: pointer;
+}
+
+.parameter--unused {
+  color: $gray;
+}
+
+.parameter--selected {
+  background-color: $blue;
+}
+
+.parameter--active {
+  background-color: $yellow;
+}

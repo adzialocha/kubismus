@@ -1,0 +1,31 @@
+b,
+strong {
+  font-weight: $font-weight-bold;
+}
+
+p {
+  margin: 0;
+
+  line-height: $base-line-height;
+
+  + p {
+    margin-top: $default-spacing;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: $default-spacing;
+
+  font-weight: $font-weight-bold;
+  font-size: 3rem;
+
+  letter-spacing: -.05rem;
+
+  line-height: $base-line-height;
+}

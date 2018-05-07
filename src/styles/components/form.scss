@@ -1,0 +1,33 @@
+.form {
+  width: 100%;
+}
+
+.form__group {
+  + .form__group {
+    margin-top: $default-spacing;
+  }
+}
+
+.form__label {
+  display: block;
+
+  margin-bottom: $default-spacing;
+
+  font-weight: $font-weight-bold;
+}
+
+.form__input {
+  width: 100%;
+}
+
+.form__actions {
+  margin-top: $default-spacing;
+}
+
+.form__error {
+  margin-bottom: $default-spacing;
+
+  padding: $default-spacing;
+
+  background-color: $red;
+}

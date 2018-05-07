@@ -1,0 +1,41 @@
+.icon {
+  font-style: normal;
+
+  line-height: 2;
+}
+
+.icon--play {
+  &::after {
+    content: "►";
+  }
+}
+
+.icon--stop {
+  &::after {
+    content: "▣";
+  }
+}
+
+.icon--record {
+  &::after {
+    content: "◉";
+  }
+}
+
+.icon--add {
+  &::after {
+    content: "+";
+  }
+}
+
+.icon--remove {
+  &::after {
+    content: "✕";
+  }
+}
+
+.icon--toggle {
+  &::after {
+    content: "↹";
+  }
+}

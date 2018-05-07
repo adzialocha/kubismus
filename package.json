@@ -1,7 +1,7 @@
 {
   "name": "kubismus",
   "version": "0.2.0",
-  "description": "An experimental osc editor",
+  "description": "experimental osc editor",
   "main": "index.js",
   "scripts": {
     "build": "yarn run clear && webpack --mode production",
@@ -22,6 +22,7 @@
     "url": "git+https://github.com/adzialocha/kubismus.git"
   },
   "keywords": [
+    "electron",
     "osc"
   ],
   "author": "adzialocha",

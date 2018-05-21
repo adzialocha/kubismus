@@ -35,6 +35,10 @@ class SetupList extends Component {
   renderTracks(tracks) {
     return tracks.map(track => {
       const devices = this.props.setup.devices.filter(device => {
+        if (!('deviceIds' in track)) {
+          return false;
+        };
+
         return track.deviceIds.includes(device.id);
       });
 
@@ -58,6 +62,10 @@ class SetupList extends Component {
   renderDevices(devices) {
     return devices.map(device => {
       const parameters = this.props.setup.parameters.filter(parameter => {
+        if (!('parameterIds' in device)) {
+          return false;
+        };
+
         return device.parameterIds.includes(parameter.id);
       });
 

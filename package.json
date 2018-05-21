@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "build": "yarn run clear && webpack --mode production",
-    "clear": "rimraf ./dist",
+    "clear": "rimraf ./dist && rimraf ./build",
     "compile": "yarn run build && yarn run electron:build && yarn run clear",
     "electron": "electron .",
     "electron:build": "electron-packager . --out ./build --icon ./icon.icns",
     "lint": "yarn lint:scss && yarn lint:js",
-    "lint:js": "eslint ./src/scripts ./server.js",
+    "lint:js": "eslint ./src/scripts ./server.js ./index.js",
     "lint:scss": "stylelint ./src/styles",
-    "serve": "node server.js",
+    "serve": "node ./server.js",
     "start": "yarn serve",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "yarn run clear && webpack --mode development --watch"
@@ -71,6 +71,7 @@
   "dependencies": {
     "chalk": "^2.4.0",
     "classnames": "^2.2.5",
+    "express": "^4.16.3",
     "immutability-helper": "^2.6.6",
     "ip": "^1.1.5",
     "keymirror": "^0.1.1",

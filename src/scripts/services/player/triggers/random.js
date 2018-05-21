@@ -6,6 +6,7 @@ export default {
       max: Number.MAX_SAFE_INTEGER,
       min: 1,
       step: 1,
+      type: 'number',
     },
   },
   value: (runtime, options) => {

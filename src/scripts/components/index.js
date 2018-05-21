@@ -11,4 +11,5 @@ export { default as SettingsNetwork } from './SettingsNetwork';
 export { default as SettingsSetup } from './SettingsSetup';
 export { default as SetupList } from './SetupList';
 export { default as Sidebar } from './Sidebar';
+export { default as SidebarParameter } from './SidebarParameter';
 export { default as View } from './View';

@@ -4,6 +4,7 @@ import update from 'immutability-helper';
 import { connect } from 'react-redux';
 
 import player from '../services/player';
+import { SidebarParameter } from './';
 import { updateSceneParameter } from '../actions/scenes';
 
 class Sidebar extends Component {
@@ -25,12 +26,12 @@ class Sidebar extends Component {
   }
 
   onTriggerOptionChanged(event) {
-    const { name, value } = event.target;
+    const { name, value } = event;
     this.changeOption('triggerOptions', name, value);
   }
 
   onModuleOptionChanged(event) {
-    const { name, value } = event.target;
+    const { name, value } = event;
     this.changeOption('moduleOptions', name, value);
   }
 
@@ -92,25 +93,19 @@ class Sidebar extends Component {
   }
 
   renderTriggerParameters() {
-    return Object.keys(this.props.triggerParameters).map((parameterName, index) => {
-      const parameter = this.props.triggerParameters[parameterName];
+    return Object.keys(this.props.triggerParameters).map((name, index) => {
+      const options = this.props.triggerParameters[name];
+      const value = this.props.options.triggerOptions[name];
 
       return (
-        <div className='sidebar__group' key={index}>
-          <label className='sidebar__label'>{ parameter.label }</label>
-
-          <input
-            className='sidebar__input'
-            disabled={this.props.isDisabled}
-            name={parameterName}
-            type='number'
-            min={parameter.min}
-            max={parameter.max}
-            step={parameter.step}
-            value={this.props.options.triggerOptions[parameterName]}
-            onChange={this.onTriggerOptionChanged}
-          />
-        </div>
+        <SidebarParameter
+          isDisabled={this.props.isDisabled}
+          key={index}
+          name={name}
+          options={options}
+          value={value}
+          onValueChanged={this.onTriggerOptionChanged}
+        />
       );
     });
   }
@@ -147,25 +142,19 @@ class Sidebar extends Component {
   }
 
   renderModuleParameters() {
-    return Object.keys(this.props.moduleParameters).map((parameterName, index) => {
-      const parameter = this.props.moduleParameters[parameterName];
+    return Object.keys(this.props.moduleParameters).map((name, index) => {
+      const options = this.props.moduleParameters[name];
+      const value = this.props.options.moduleOptions[name];
 
       return (
-        <div className='sidebar__group' key={index}>
-          <label className='sidebar__label'>{ parameter.label }</label>
-
-          <input
-            className='sidebar__input'
-            disabled={this.props.isDisabled}
-            name={parameterName}
-            type='number'
-            min={parameter.min}
-            max={parameter.max}
-            step={parameter.step}
-            value={this.props.options.moduleOptions[parameterName]}
-            onChange={this.onModuleOptionChanged}
-          />
-        </div>
+        <SidebarParameter
+          isDisabled={this.props.isDisabled}
+          key={index}
+          name={name}
+          options={options}
+          value={value}
+          onValueChanged={this.onModuleOptionChanged}
+        />
       );
     });
   }

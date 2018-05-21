@@ -6,6 +6,7 @@ export default {
       max: 100,
       min: 1,
       step: 1,
+      type: 'number',
     },
   },
   value: options => {

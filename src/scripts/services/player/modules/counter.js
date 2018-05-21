@@ -1,8 +1,8 @@
 export default {
   parameters: {
-    chance: {
-      default: 50,
-      label: 'Chance (in %)',
+    length: {
+      default: 2,
+      label: 'Active every %nd step',
       max: 100,
       min: 1,
       step: 1,
@@ -10,6 +10,6 @@ export default {
     },
   },
   value: (runtime, options) => {
-    return Math.random() < (options.chance / 100);
+    return (runtime.counter - 1) % options.length === 0;
   },
 };

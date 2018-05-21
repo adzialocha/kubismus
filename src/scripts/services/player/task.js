@@ -47,7 +47,7 @@ export default class Task {
 
   next() {
     this.timeout = setTimeout(() => {
-      const isActive = this.module.value(this.options.module);
+      const isActive = this.module.value(this.runtime, this.options.module);
 
       this.callback(isActive);
       this.next();

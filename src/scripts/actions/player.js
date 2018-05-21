@@ -3,14 +3,15 @@ import ActionTypes from '../actionTypes';
 import { PLAYER_ACTION } from '../middlewares/player';
 import { send } from './osc';
 
-export function startPlayer(id, triggerName, moduleName, options) {
+export function startPlayer(id, triggerName, moduleName, options, dependencies) {
   return dispatch => {
     dispatch({
       [PLAYER_ACTION]: {
+        dependencies,
         id,
-        triggerName,
         moduleName,
         options,
+        triggerName,
         type: 'start',
       },
     });

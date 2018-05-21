@@ -11,10 +11,19 @@ export default store => next => action => {
   const params = action[PLAYER_ACTION];
 
   if (params.type === 'start') {
-    const { id, triggerName, moduleName, options } = params;
+    const { id, triggerName, moduleName, options, dependencies } = params;
 
     player.start(id, triggerName, moduleName, options, isActive => {
+      // Trigger parameter
       store.dispatch(changeParameterState(id, isActive));
+
+      // ... and it's dependencies
+      dependencies.forEach(dependency => {
+        store.dispatch(changeParameterState(
+          dependency.parameter,
+          (dependency.type === 'invert') ? !isActive : isActive,
+        ));
+      });
     });
   } else if (params.type === 'stop') {
     const { id } = params;

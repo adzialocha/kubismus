@@ -29,7 +29,20 @@ export function startAllPlayers() {
         module: moduleOptions,
       };
 
-      dispatch(startPlayer(hash, triggerName, moduleName, options));
+      let dependencies = [];
+      if (hash in scene.dependencies) {
+        dependencies = scene.dependencies[hash];
+      }
+
+      dispatch(
+        startPlayer(
+          hash,
+          triggerName,
+          moduleName,
+          options,
+          dependencies
+        )
+      );
     });
   };
 }
@@ -44,6 +57,12 @@ export function stopAllPlayers() {
 
     Object.keys(scene.parameters).forEach(hash => {
       dispatch(stopPlayer(hash));
+    });
+
+    Object.keys(scene.dependencies).forEach(hash => {
+      scene.dependencies[hash].forEach(dependency => {
+        dispatch(stopPlayer(dependency.parameter));
+      });
     });
   };
 }

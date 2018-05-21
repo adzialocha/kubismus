@@ -4,7 +4,7 @@ import update from 'immutability-helper';
 import { connect } from 'react-redux';
 
 import player from '../services/player';
-import { SidebarParameter } from './';
+import { SidebarParameter, SidebarDependencies } from './';
 import { updateSceneParameter } from '../actions/scenes';
 
 class Sidebar extends Component {
@@ -49,6 +49,7 @@ class Sidebar extends Component {
         { this.renderHeader() }
         { this.renderTriggerParametersPanel() }
         { this.renderModuleParametersPanel() }
+        { this.renderDependencies() }
       </div>
     );
   }
@@ -159,6 +160,24 @@ class Sidebar extends Component {
     });
   }
 
+  renderDependencies() {
+    return (
+      <div className='sidebar__panel'>
+        <div className='sidebar__group'>
+          <label className='sidebar__label'>
+            <strong>Dependencies</strong>
+          </label>
+        </div>
+
+        <SidebarDependencies
+          isDisabled={this.props.isDisabled}
+          parameterHash={this.props.parameter.hash}
+          sceneId={this.props.scene.id}
+        />
+      </div>
+    );
+  }
+
   changeOption(namespace, key, value) {
     let converted = value;
 
@@ -194,9 +213,9 @@ class Sidebar extends Component {
   constructor(props) {
     super(props);
 
+    this.onModuleOptionChanged = this.onModuleOptionChanged.bind(this);
     this.onOptionChanged = this.onOptionChanged.bind(this);
     this.onTriggerOptionChanged = this.onTriggerOptionChanged.bind(this);
-    this.onModuleOptionChanged = this.onModuleOptionChanged.bind(this);
   }
 }
 

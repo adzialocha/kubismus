@@ -16,6 +16,9 @@ export default keyMirror({
   SCENES_REMOVE: null,
   SCENES_RESET: null,
   SCENES_SELECT: null,
+  SCENES_ADD_DEPENDENCY: null,
+  SCENES_REMOVE_DEPENDENCY: null,
+  SCENES_UPDATE_DEPENDENCY: null,
   SCENES_UPDATE_PARAMETER: null,
 
   SETTINGS_LOAD: null,

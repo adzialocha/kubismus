@@ -55,3 +55,30 @@ export function updateSceneParameter(sceneId, parameterHash, values) {
     values,
   };
 };
+
+export function addSceneDependency(sceneId, parameterHash) {
+  return {
+    parameterHash,
+    sceneId,
+    type: ActionTypes.SCENES_ADD_DEPENDENCY,
+  };
+};
+
+export function updateSceneDependency(sceneId, parameterHash, id, values) {
+  return {
+    id,
+    parameterHash,
+    sceneId,
+    type: ActionTypes.SCENES_UPDATE_DEPENDENCY,
+    values,
+  };
+};
+
+export function removeSceneDependency(sceneId, parameterHash, id) {
+  return {
+    id,
+    parameterHash,
+    sceneId,
+    type: ActionTypes.SCENES_REMOVE_DEPENDENCY,
+  };
+};

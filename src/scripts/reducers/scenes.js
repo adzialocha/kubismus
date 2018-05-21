@@ -11,8 +11,15 @@ const initialState = {
 };
 
 const initialSceneState = {
+  dependencies: {},
   id: 1,
   parameters: {},
+};
+
+const initialDependencyState = {
+  id: 1,
+  parameter: '',
+  type: '',
 };
 
 function updateStorage(state) {
@@ -61,14 +68,83 @@ export default function scenes(state = initialState, action) {
         update(state, { $set: initialState }),
       );
     case ActionTypes.SCENES_UPDATE_PARAMETER:
+      return updateStorage(
+        update(state, {
+          scenes: {
+            [state.scenes.findIndex(s => s.id === action.sceneId)]: {
+              parameters: {
+                [action.parameterHash]: { $set: action.values },
+              },
+            },
+          },
+        })
+      );
+    case ActionTypes.SCENES_ADD_DEPENDENCY:
       const sceneIndex = state.scenes.findIndex(s => s.id === action.sceneId);
+      const newDependency = Object.assign({}, initialDependencyState);
+
+      if (action.parameterHash in state.scenes[sceneIndex].dependencies) {
+        const dependencies = state.scenes[sceneIndex].dependencies[action.parameterHash];
+
+        if (dependencies.length > 0) {
+          newDependency.id = dependencies[dependencies.length - 1].id + 1;
+        }
+      }
+
+      const updateAction = {};
+
+      if (action.parameterHash in state.scenes[sceneIndex].dependencies) {
+        updateAction.$push = [newDependency];
+      } else {
+        updateAction.$set = [newDependency];
+      }
 
       return updateStorage(
         update(state, {
           scenes: {
             [sceneIndex]: {
-              parameters: {
-                [action.parameterHash]: { $set: action.values },
+              dependencies: {
+                [action.parameterHash]: updateAction,
+              },
+            },
+          },
+        })
+      );
+    case ActionTypes.SCENES_UPDATE_DEPENDENCY:
+      const indexScene = state.scenes.findIndex(s => s.id === action.sceneId);
+      const dependencyIndex = state.scenes[indexScene].dependencies[action.parameterHash]
+        .findIndex(d => d.id === action.id);
+
+      return updateStorage(
+        update(state, {
+          scenes: {
+            [indexScene]: {
+              dependencies: {
+                [action.parameterHash]: {
+                  [dependencyIndex]: {
+                    parameter: { $set: action.values.parameter },
+                    type: { $set: action.values.type },
+                  },
+                },
+              },
+            },
+          },
+        })
+      );
+    case ActionTypes.SCENES_REMOVE_DEPENDENCY:
+      const index = state.scenes.findIndex(s => s.id === action.sceneId);
+
+      return updateStorage(
+        update(state, {
+          scenes: {
+            [index]: {
+              dependencies: {
+                [action.parameterHash]: {
+                  $splice: [[
+                    state.scenes[index].dependencies[action.parameterHash]
+                      .findIndex(d => d.id === action.id), 1,
+                  ]],
+                },
               },
             },
           },

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "yarn run clear && webpack --mode production",
-    "clear": "rimraf ./dist && rimraf ./build",
+    "clear": "rimraf ./dist",
     "compile": "yarn run build && yarn run electron:build && yarn run clear",
     "electron": "electron .",
     "electron:build": "electron-packager . --out ./build --icon ./icon.icns",

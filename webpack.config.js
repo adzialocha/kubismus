@@ -5,6 +5,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const pkg = require('./package.json');
+
 function getPath(filePath) {
   return path.resolve(__dirname, filePath);
 }
@@ -80,6 +82,7 @@ module.exports = (env, options) => {
     },
     plugins: [
       new webpack.DefinePlugin({
+        'window.APP_VERSION': JSON.stringify(pkg.version),
         'process.env.NODE_ENV': JSON.stringify(options.mode),
       }),
       new HtmlWebpackPlugin({

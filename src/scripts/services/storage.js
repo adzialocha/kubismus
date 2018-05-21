@@ -1,7 +1,7 @@
-const NAMESPACE = 'solo-link';
+const NAMESPACE = 'kubismus';
 
 function makeKey(key) {
-  return `${NAMESPACE}-${key}`;
+  return `${NAMESPACE}-${window.APP_VERSION}-${key}`;
 }
 
 export function getItem(key) {

@@ -28,9 +28,9 @@ module.exports = (env, options) => {
         ASSETS_PATH,
         'node_modules',
       ],
-      alias: {
-        'osc-js': getPath('./node_modules/osc-js/lib/osc.browser.js'),
-      },
+    },
+    node: {
+      dgram: 'empty',
     },
     module: {
       rules: [
@@ -103,5 +103,5 @@ module.exports = (env, options) => {
       ]),
     ],
     devtool: isProduction ? false : 'source-map',
-  };
+  }
 };

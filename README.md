@@ -21,3 +21,7 @@ yarn serve // or yarn start in parallel terminal
 ```
 yarn compile
 ```
+
+## License
+
+GLP v3

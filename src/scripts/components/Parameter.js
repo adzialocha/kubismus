@@ -12,8 +12,24 @@ class Parameter extends Component {
     parameter: PropTypes.object.isRequired,
   }
 
+  componentWillMount() {
+    document.addEventListener('keydown', this.onKey);
+    document.addEventListener('keyup', this.onKey);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.onKey);
+    document.removeEventListener('keyup', this.onKey);
+  }
+
+  onKey(event) {
+    this.setState({
+      isMetaKeyDown: event.metaKey,
+    });
+  }
+
   onSelected() {
-    this.props.onSelected(this.props.parameter.hash);
+    this.props.onSelected(this.props.parameter.hash, this.state.isMetaKeyDown);
   }
 
   render() {
@@ -33,7 +49,12 @@ class Parameter extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      isMetaKeyDown: false,
+    };
+
     this.onSelected = this.onSelected.bind(this);
+    this.onKey = this.onKey.bind(this);
   }
 }
 

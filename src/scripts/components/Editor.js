@@ -15,8 +15,8 @@ class Editor extends Component {
     selectParameter: PropTypes.func.isRequired,
   }
 
-  onParameterSelected(hash) {
-    this.props.selectParameter(hash);
+  onParameterSelected(hash, isDirect) {
+    this.props.selectParameter(hash, isDirect);
   }
 
   render() {

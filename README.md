@@ -26,4 +26,4 @@ yarn compile
 
 ## License
 
-GLP v3
+`GPL v3`
